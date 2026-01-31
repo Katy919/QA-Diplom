@@ -18,9 +18,9 @@ services:
     volumes:
       - ./data:/var/lib/postgresql
     environment:
-      - POSTGRES_DB=db
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=9mREsvXDs9Gk89Ef
+      - POSTGRES_DB=app
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
 
   nodejs:
     build: ./gate-simulator

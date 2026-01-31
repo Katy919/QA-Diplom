@@ -158,6 +158,18 @@ public class CreditTest {
     }
 
     @Test
+    void shouldShowErrorIfYearHasOneDigit() {
+        var mainPage = new MainPage();
+        var creditPage = mainPage.buyOnCredit();
+
+        var card = DataHelper.withYear("3");
+        creditPage.fillCardData(card);
+        creditPage.submit();
+
+        creditPage.shouldShowYearErrorInvalidFormat();
+    }
+
+    @Test
     void shouldShowCreditErrorIfMonthIsEmpty() {
         var mainPage = new MainPage();
         var creditPage = mainPage.buyOnCredit();
@@ -191,6 +203,18 @@ public class CreditTest {
         creditPage.submit();
 
         creditPage.shouldShowMonthErrorInvalidRange();
+    }
+
+    @Test
+    void shouldShowErrorIfMonthHasOneDigit() {
+        var mainPage = new MainPage();
+        var creditPage = mainPage.buy();
+
+        var card = DataHelper.withMonth("1");
+        creditPage.fillCardData(card);
+        creditPage.submit();
+
+        creditPage.shouldShowMonthError();
     }
 
     @Test
